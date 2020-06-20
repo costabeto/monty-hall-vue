@@ -1,16 +1,49 @@
 <template>
   <div id="app">
     <h1>Problema de Monty Hall</h1>
-    <Gift />
+    <div class="form">
+      <div v-if="!started">
+        <label for="portsAmout">Quantas portas?</label>
+        <input
+          type="text"
+          id="portsAmout"
+          size="3"
+          v-model.number="portsAmout"
+        />
+      </div>
+      <div v-if="!started">
+        <label for="selectedPort">Qual a porta premiada?</label>
+        <input
+          type="text"
+          id="selectedPort"
+          size="3"
+          v-model.number="selectedPort"
+        />
+      </div>
+      <button v-if="!started" @click="started = true">Iniciar</button>
+      <button v-if="started" @click="started = false">Reiniciar</button>
+    </div>
+    <div class="doors" v-if="started">
+      <div v-for="i in portsAmout" :key="i">
+        <Door :hasGift="i === selectedPort" :number="i" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Gift from "./components/Gift";
+import Door from "./components/Door";
 
 export default {
   name: "App",
-  components: { Gift },
+  components: { Door },
+  data: function() {
+    return {
+      started: false,
+      portsAmout: 3,
+      selectedPort: null,
+    };
+  },
 };
 </script>
 
