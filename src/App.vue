@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Problema de Monty Hall</h1>
+    <Gift />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Gift from "./components/Gift";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { Gift },
+};
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    90deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#app h1 {
+  border: 1px solid #000;
+  background-color: #0004;
+  padding: 20px;
+  margin-bottom: 60px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.form,
+.form input,
+.form button {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+.doors {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 </style>
